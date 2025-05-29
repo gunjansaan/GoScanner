@@ -1,0 +1,62 @@
+[
+    {
+        "id": 1,
+        "name": "Camella Kinnaird",
+        "position": "Clinical Specialist",
+        "category": "Business Systems Development Analyst"
+    },
+    {
+        "id": 2,
+        "name": "Avril Ramshay",
+        "position": "Office Assistant I",
+        "category": "Nuclear Power Engineer"
+    },
+    {
+        "id": 3,
+        "name": "Gilbert Ferrarone",
+        "position": "VP Quality Control",
+        "category": "Geologist II"
+    },
+    {
+        "id": 4,
+        "name": "Shayne Nutman",
+        "position": "Research Assistant I",
+        "category": "Environmental Specialist"
+    },
+    {
+        "id": 5,
+        "name": "Falkner Jerrolt",
+        "position": "Project Manager",
+        "category": "Staff Accountant IV"
+    },
+    {
+        "id": 6,
+        "name": "Kevan Tylor",
+        "position": "Statistician II",
+        "category": "Information Systems Manager"
+    },
+    {
+        "id": 7,
+        "name": "Abran Roggero",
+        "position": "Occupational Therapist",
+        "category": "Operator"
+    },
+    {
+        "id": 8,
+        "name": "Riki Siderfin",
+        "position": "Automation Specialist II",
+        "category": "Social Worker"
+    },
+    {
+        "id": 9,
+        "name": "Giana Falck",
+        "position": "Web Developer IV",
+        "category": "Desktop Support Technician"
+    },
+    {
+        "id": 10,
+        "name": "Aloisia Nevison",
+        "position": "Mechanical Systems Engineer",
+        "category": "Accountant II"
+    }
+]

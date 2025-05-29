@@ -1,0 +1,10 @@
+FAILED : {name='Camella Kinnaird', position='Clinical Specialist', category='Business Systems Development Analyst'}: Can't create an ImageOutputStream!
+FAILED : {name='Avril Ramshay', position='Office Assistant I', category='Nuclear Power Engineer'}: Can't create an ImageOutputStream!
+FAILED : {name='Gilbert Ferrarone', position='VP Quality Control', category='Geologist II'}: Can't create an ImageOutputStream!
+FAILED : {name='Shayne Nutman', position='Research Assistant I', category='Environmental Specialist'}: Can't create an ImageOutputStream!
+FAILED : {name='Falkner Jerrolt', position='Project Manager', category='Staff Accountant IV'}: Can't create an ImageOutputStream!
+FAILED : {name='Kevan Tylor', position='Statistician II', category='Information Systems Manager'}: Can't create an ImageOutputStream!
+FAILED : {name='Abran Roggero', position='Occupational Therapist', category='Operator'}: Can't create an ImageOutputStream!
+FAILED : {name='Riki Siderfin', position='Automation Specialist II', category='Social Worker'}: Can't create an ImageOutputStream!
+FAILED : {name='Giana Falck', position='Web Developer IV', category='Desktop Support Technician'}: Can't create an ImageOutputStream!
+FAILED : {name='Aloisia Nevison', position='Mechanical Systems Engineer', category='Accountant II'}: Can't create an ImageOutputStream!

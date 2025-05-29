@@ -1,0 +1,10 @@
+FAILED : {name='Camella Kinnaird', position='Clinical Specialist', category='Business Systems Development Analyst'}: Cannot invoke "String.isEmpty()" because "contents" is null
+FAILED : {name='Avril Ramshay', position='Office Assistant I', category='Nuclear Power Engineer'}: Cannot invoke "String.isEmpty()" because "contents" is null
+FAILED : {name='Gilbert Ferrarone', position='VP Quality Control', category='Geologist II'}: Cannot invoke "String.isEmpty()" because "contents" is null
+FAILED : {name='Shayne Nutman', position='Research Assistant I', category='Environmental Specialist'}: Cannot invoke "String.isEmpty()" because "contents" is null
+FAILED : {name='Falkner Jerrolt', position='Project Manager', category='Staff Accountant IV'}: Cannot invoke "String.isEmpty()" because "contents" is null
+FAILED : {name='Kevan Tylor', position='Statistician II', category='Information Systems Manager'}: Cannot invoke "String.isEmpty()" because "contents" is null
+FAILED : {name='Abran Roggero', position='Occupational Therapist', category='Operator'}: Cannot invoke "String.isEmpty()" because "contents" is null
+FAILED : {name='Riki Siderfin', position='Automation Specialist II', category='Social Worker'}: Cannot invoke "String.isEmpty()" because "contents" is null
+FAILED : {name='Giana Falck', position='Web Developer IV', category='Desktop Support Technician'}: Cannot invoke "String.isEmpty()" because "contents" is null
+FAILED : {name='Aloisia Nevison', position='Mechanical Systems Engineer', category='Accountant II'}: Cannot invoke "String.isEmpty()" because "contents" is null
