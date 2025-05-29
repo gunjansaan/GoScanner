@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>QR Details</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to right, #74ebd5, #acb6e5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 100px;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        #qr-reader {
+            width: 100%;
+            max-width: 400px;
+            margin: 20px auto;
+        }
+
+        #details {
+            margin-top: 20px;
+        }
+
+        button {
+            margin-top: 30px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    <!-- QR Scanner Library -->
+    <script src="https://unpkg.com/html5-qrcode"></script>
+</head>
+<body>
+
+    <div class="container">
+        <h2 id="scan-heading">Scan QR Code to Get Details</h2>
+        <div id="qr-reader"></div>
+        <div id="details" aria-live="polite"></div>
+        <button onclick="location.href='home.html'">Back</button>
+    </div>
+
+    <script>
+        const baseURL = "http://http://localhost:8091/api/v1/";
+        
+        const token = localStorage.getItem('authToken');
+
+        function displayDetails(user) {
+            document.getElementById("scan-heading").style.display = "none";
+
+            const div = document.getElementById("details");
+            div.innerHTML = `
+                <h3>User Information</h3>
+                <p><strong>ID:</strong> ${user.id}</p>
+                <p><strong>Name:</strong> ${user.name}</p>
+                <p><strong>Position:</strong> ${user.position}</p>
+                <p><strong>Category:</strong> ${user.category}</p>
+            `;
+        }
+
+        async function qrMetadtaCollector(userId) {
+
+            try {
+                const response = await fetch(`${baseURL}users/qr/${userId}`, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+
+
+                if (!response.ok) {
+                    const error = await response.text();
+                    alert(`Error ${response.status}: ${error}`);
+                    return;
+                }
+
+                const user = await response.json();
+                displayDetails(user);
+            } catch (error) {
+                alert(`Network error: ${error.message}`);
+            }
+        }
+
+        function startQRScanner() {
+            const qrReader = new Html5Qrcode("qr-reader");
+
+            qrReader.start(
+                { facingMode: "environment" }, // Use rear camera on mobile
+                {
+                    fps: 10,
+                    qrbox: 250
+                },
+                (decodedText, decodedResult) => {
+                    qrReader.stop().then(() => {
+                        console.log("QR Code scanned:", decodedText);
+                        qrMetadtaCollector(decodedText.trim()); // Assuming the QR contains the user ID
+                    }).catch(err => {
+                        console.error("Error stopping scanner:", err);
+                    });
+                },
+                (errorMessage) => {
+                    // Optional: handle scan errors here
+                }
+            ).catch(err => {
+                alert("Camera access error: " + err);
+            });
+        }
+
+        // Start scanner after DOM is ready
+        window.addEventListener("DOMContentLoaded", startQRScanner);
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Go Scanner | Landing Page</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #74ebd5, #acb6e5);
+            background-image: url('scan.jpg');
+            background-repeat: no-repeat;
+            background-position: right center;
+            background-size: contain;
+        }
+
+
+        .landing-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 80px;
+            min-height: 100vh;
+        }
+
+        .left-content {
+            max-width: 50%;
+        }
+
+        .left-content h1 {
+            font-size: 48px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .left-content p {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .left-content button {
+            padding: 12px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            background-color: #007bff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .left-content button:hover {
+            background-color: #0056b3;
+        }
+        @media (max-width: 768px) {
+            .landing-container {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 40px 20px;
+                text-align: left;
+                background-position: bottom center;
+                background-size: cover;
+            }
+
+            .left-content {
+                max-width: 100%;
+            }
+
+            .left-content h1 {
+                font-size: 36px;
+            }
+
+            .left-content p {
+                font-size: 16px;
+            }
+
+            .left-content button {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .landing-container {
+                padding: 30px 15px;
+            }
+
+            .left-content h1 {
+                font-size: 28px;
+            }
+
+            .left-content p {
+                font-size: 15px;
+            }
+
+            .left-content button {
+                font-size: 14px;
+                padding: 10px 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .landing-container {
+                flex-direction: column;
+                padding: 40px 20px;
+                text-align: center;
+            }
+
+            .left-content,
+            .right-image {
+                max-width: 100%;
+            }
+
+            .right-image {
+                margin-top: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="landing-container">
+        <div class="left-content">
+            <h1>Go Scanner</h1>
+            <p>
+                Go Scanner is a smart document scanning solution that makes <br> digitizing, saving, and sharing documents
+                quick and effortless.
+                <br> Whether you're scanning receipts, IDs, or business documents, <br>Go Scanner brings speed and clarity right
+                to your device.
+            </p>
+            <button onclick="location.href='login.html'">Join Us</button>
+        </div>
+    </div>
+
+</body>
+
+</html>

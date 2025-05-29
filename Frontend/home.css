@@ -1,0 +1,76 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+}
+
+#logo,
+.offcanvas-title {
+    font-size: 40px;
+    color: white;
+}
+
+.nav-item {
+    color: white;
+}
+
+.navbar-brand,
+.container-fluid {
+    font-weight: 500;
+    font-size: 80px;
+    color: white;
+    font-size: 24px;
+}
+
+.navbar-toggler {
+    border: none;
+    font-size: 1.25em;
+}
+
+.navbar-toggler:focus,
+.btn-close {
+    box-shadow: none;
+    outline: none;
+}
+
+.nav-link {
+    color: white;
+    font-weight: 500;
+    position: relative;
+}
+
+.nav-link:hover,
+.nav-link.action {
+    color: black;
+}
+
+@media (min-width: 991px) {
+    .nav-link::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0%;
+        height: 2px;
+        background-color: white;
+        visibility: hidden;
+        transition: 0.3s ease-in-out;
+    }
+
+    .nav-link:hover::before,
+    .nav-link.action::before {
+        width: 100%;
+        visibility: visible;
+    }
+}
+
+/* NEW RULE FOR MOBILE VIEW (screens smaller than 991px) */
+@media (max-width: 991px) {
+    .nav-link {
+        color: black !important; /* Change the color to black on mobile */
+    }
+
+    .nav-link:hover,
+    .nav-link.action {
+        color: black !important; /* Ensure hover also stays black */
+    }
+}

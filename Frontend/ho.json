@@ -1,0 +1,36 @@
+    {
+        "id": "680c7687232d0d27585af65f",
+        "fileUri": "http://localhost:8091/api/v1/dataset/download/Ceramic%20Operators63a40b44-ed8a-47dd-8d8d-d00e341a34ee.json",
+        "uploadDate": "2025-04-26T11:30:39.947",
+        "status": "FAILED",
+        "processedQRPath": null,
+        "processedQRRecon": null
+    }
+
+    {
+        "id": "680c7687232d0d27585af65f",
+        "fileUri": "http://localhost:8091/api/v1/dataset/download/Ceramic%20Operators63a40b44-ed8a-47dd-8d8d-d00e341a34ee.json",
+        "uploadDate": "2025-04-26T11:30:39.947",
+        "status": "SUCCESS",
+        "processedQRPath": null,
+        "processedQRRecon": null
+    }
+
+    {
+        "id": "680c7687232d0d27585af65f",
+        "fileUri": "http://localhost:8091/api/v1/dataset/download/Ceramic%20Operators63a40b44-ed8a-47dd-8d8d-d00e341a34ee.json",
+        "uploadDate": "2025-04-26T11:30:39.947",
+        "status": "FAILED",
+        "processedQRPath": null,
+        "processedQRRecon": null
+    }
+
+    {
+        "id": "680c7687232d0d27585af65f",
+        "fileUri": "http://localhost:8091/api/v1/dataset/download/Ceramic%20Operators63a40b44-ed8a-47dd-8d8d-d00e341a34ee.json",
+        "uploadDate": "2025-04-26T11:30:39.947",
+        "status": "SUCCESS",
+        "processedQRPath": null,
+        "processedQRRecon": null
+    }
+    

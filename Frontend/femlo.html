@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Password Reset</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+
+<body class="bg-light">
+
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card shadow">
+          <div class="card-body">
+            <h3 class="card-title text-center mb-4">Reset Your Password</h3>
+
+            <form id="resetForm">
+              <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="email" required />
+              </div>
+
+              <div class="mb-3">
+                <label for="newPassword" class="form-label">New Password</label>
+                <input type="password" class="form-control" id="newPassword" required />
+              </div>
+
+              <div class="mb-3">
+                <label for="confirmPassword" class="form-label">Confirm Password</label>
+                <input type="password" class="form-control" id="confirmPassword" required />
+              </div>
+
+              <div id="message" class="mb-3 text-danger"></div>
+
+              <button type="submit" class="btn btn-primary w-100">Reset Password</button>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./common.js"></script>
+  <script>
+    // Get query string from the URL
+    const queryString = window.location.search;
+
+    // Use URLSearchParams to parse it
+    const urlParams = new URLSearchParams(queryString);
+
+    // Get the value of "token"
+    const token = urlParams.get('token');
+
+    document.getElementById('resetForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const email = document.getElementById('email').value;
+      const newPassword = document.getElementById('newPassword').value;
+      const confirmPassword = document.getElementById('confirmPassword').value;
+      const message = document.getElementById('message');
+
+      if (newPassword !== confirmPassword) {
+        message.textContent = "Passwords do not match.";
+        return;
+      }
+
+      message.textContent = "";
+
+      let data = {
+        "password": `${confirmPassword}`,
+        "email": `${email}`
+      }
+      resetPassword(token, data);
+    });
+
+
+  </script>
+</body>
+
+</html>

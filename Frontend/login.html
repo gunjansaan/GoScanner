@@ -1,0 +1,354 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login, Signup & Forgot Password</title>
+  <script src="./common.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #74ebd5, #acb6e5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      width: 320px;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+
+    .tab {
+      flex: 1;
+      text-align: center;
+      cursor: pointer;
+      padding: 0.5rem;
+      border-bottom: 2px solid transparent;
+      font-weight: bold;
+    }
+
+    .tab.active {
+      border-color: #3498db;
+      color: #3498db;
+    }
+
+    form {
+      display: none;
+      flex-direction: column;
+    }
+
+    form.active {
+      display: flex;
+    }
+
+    input {
+      padding: 0.6rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+
+    button {
+      padding: 0.6rem;
+      background: #3498db;
+      border: none;
+      color: white;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    button:hover {
+      background: #2980b9;
+    }
+
+    .error {
+      color: red;
+      font-size: 0.9rem;
+      margin-top: -0.8rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .link {
+      font-size: 0.9rem;
+      color: #3498db;
+      text-align: left;
+      margin-bottom: 1rem;
+      cursor: pointer;
+    }
+
+    .back-link {
+      font-size: 0.9rem;
+      color: #3498db;
+      margin-top: 0.5rem;
+      cursor: pointer;
+      text-align: center;
+    }
+    *,
+::after,
+::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.loader{
+    display: none;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-size: min(60px,6vw);
+    color: white;
+    -webkit-box-reflect: below -0.4em linear-gradient(transparent, #00000045);
+}
+.loader span {
+    display: inline-block;
+    font-weight: bolder;
+    animation: bouncing-wave-animation 2s infinite;
+    animation-delay: calc(.25s * var(--item));
+}
+@keyframes bouncing-wave-animation {
+    0%, 40%, 100% {
+        transform: translateY(0);
+    }
+    20% {
+        transform: translateY(-0.4em);
+    }
+}
+#auth_forms{
+  display: block;
+}
+
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="loader"  role="alert" aria-busy="true" aria-label="Loading">
+      <span style="--item:1">L</span>
+      <span style="--item:2">O</span>
+      <span style="--item:3">A</span>
+      <span style="--item:4">D</span>
+      <span style="--item:5">I</span>
+      <span style="--item:6">N</span>
+      <span style="--item:7">G</span>
+  </div>
+
+
+
+    <div id="auth_forms">
+    <div class="tabs">
+      <div class="tab active" onclick="switchForm('login')">Login</div>
+      <div class="tab" onclick="switchForm('signup')">Signup</div>
+    </div>
+
+
+    <form id="loginForm" class="active">
+      <input type="email" id="loginEmail" placeholder="email" />
+      <input type="password" id="loginPassword" placeholder="Password" />
+      <div class="link" onclick="showForgotPassword()">Forgot Password?</div>
+      <div id="loginError" class="error"></div>
+      <button type="submit">Login</button>
+    </form>
+
+
+    <form id="signupForm">
+      <input type="text" id="signupName" placeholder="Name" />
+      <input type="email" id="signupEmail" placeholder="Email" />
+      <input type="password" id="signupPassword" placeholder="Password" />
+      <div id="signupError" class="error"></div>
+      <button type="submit">Signup</button>
+    </form>
+
+
+    <form id="forgotPasswordForm">
+      <input type="email" id="forgotEmail" placeholder="Enter your email" />
+      <div id="forgotError" class="error"></div>
+      <button type="submit">Reset Password</button>
+      <div class="back-link" onclick="switchForm('login')">← Back to Login</div>
+    </form>
+  </div>
+</div>
+<script type="text/javascript">
+  
+  function switchForm(form) {
+    document.getElementById('loginForm').classList.remove('active');
+    document.getElementById('signupForm').classList.remove('active');
+    document.getElementById('forgotPasswordForm').style.display = 'none';
+    document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+
+    if (form === 'login') {
+      document.getElementById('loginForm').classList.add('active');
+      document.querySelector('.tab:nth-child(1)').classList.add('active');
+    } else if (form === 'signup') {
+      document.getElementById('signupForm').classList.add('active');
+      document.querySelector('.tab:nth-child(2)').classList.add('active');
+    }
+
+    clearErrors();
+  }
+
+  function showForgotPassword() {
+    document.getElementById('loginForm').classList.remove('active');
+    document.getElementById('signupForm').classList.remove('active');
+    document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+    document.getElementById('forgotPasswordForm').style.display = 'flex';
+    clearErrors();
+  }
+
+  function clearErrors() {
+    document.getElementById('loginError').textContent = '';
+    document.getElementById('signupError').textContent = '';
+    document.getElementById('forgotError').textContent = '';
+  }
+
+  // LOGIN
+  document.getElementById('loginForm').addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    const email = document.getElementById('loginEmail').value.trim();
+    const password = document.getElementById('loginPassword').value.trim();
+    const error = document.getElementById('loginError');
+
+    if (!email || !password) {
+      error.textContent = "All fields are required.";
+      return;
+    } else if (password.length < 6) {
+      error.textContent = "Password must be at least 6 characters.";
+      return;
+    }
+
+    // Show loader, hide forms
+    document.getElementById("auth_forms").style.display = "none";
+    document.querySelector(".loader").style.display = "block";
+
+    try {
+      const loginData = {
+        email: email,
+        password: password
+      };
+
+      const result = await requestEndPoint("users/login", loginData, "POST");
+
+      if (result && result.token) {
+        const { token, user } = result;
+        const { userId, name, email, company } = user;
+
+        localStorage.clear();
+        localStorage.setItem('userId', userId);
+        localStorage.setItem('authToken', token);
+
+        if (company) {
+          localStorage.setItem('user-name', name);
+          localStorage.setItem("companyId", company.id);
+          localStorage.setItem("company-name", company.name);
+        }
+
+        window.location.href = "home.html";
+      } else {
+        throw new Error("Invalid credentials.");
+      }
+
+    } catch (err) {
+      error.textContent = err.message || "Something went wrong.";
+      document.getElementById("auth_forms").style.display = "block";
+      document.querySelector(".loader").style.display = "none";
+    }
+  });
+
+  // SIGNUP
+  document.getElementById('signupForm').addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    const name = document.getElementById('signupName').value.trim();
+    const email = document.getElementById('signupEmail').value.trim();
+    const password = document.getElementById('signupPassword').value.trim();
+    const error = document.getElementById('signupError');
+
+    if (!name || !email || !password) {
+      error.textContent = "All fields are required.";
+      return;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      error.textContent = "Enter a valid email.";
+      return;
+    }
+
+     // Show loader, hide forms
+    document.getElementById("auth_forms").style.display = "none";
+    document.querySelector(".loader").style.display = "block";
+
+
+    try {
+      const signupData = {
+        name,
+        email,
+        password
+      };
+
+      const result = await requestEndPoint("users/register", signupData, "POST");
+
+      if (result && result.token) {
+        const { token, user } = result;
+        const { userId, name, email, company } = user;
+
+        localStorage.clear();
+        localStorage.setItem('userId', userId);
+        localStorage.setItem('authToken', token);
+
+        if (company) {
+          localStorage.setItem('user-name', name);
+          localStorage.setItem("companyId", company.id);
+          localStorage.setItem("company-name", company.name);
+        }
+
+        window.location.href = "home.html";
+      } else {
+        throw new Error("Signup failed.");
+      }
+
+    } catch (err) {
+      error.textContent = err.message || "Something went wrong.";
+       document.getElementById("auth_forms").style.display = "block";
+      document.querySelector(".loader").style.display = "none";
+    }
+  });
+
+  // FORGOT PASSWORD
+  document.getElementById('forgotPasswordForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const email = document.getElementById('forgotEmail').value.trim();
+    const error = document.getElementById('forgotError');
+
+    if (!email ) {
+      error.textContent = "Email is required.";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      error.textContent = "Enter a valid email.";
+    } else {
+      forgetPasswordWithEmail(email);
+      error.textContent = "";
+      alert("Password reset link sent!");
+      
+    }
+  });
+</script>
+
+
+</body>
+
+</html>
